@@ -1,7 +1,7 @@
 '''
 case OS
 devs: M.Kondrashov: 30%
-      E. Bikmetov:
+      E. Bikmetov: 30%
       K. Bychkov:
 '''
 
