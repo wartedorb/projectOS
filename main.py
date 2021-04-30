@@ -1,9 +1,9 @@
-'''
+""""
 case OS
-devs: M.Kondrashov: 30%
+devs: M. Kondrashov: 30%
       E. Bikmetov:
       K. Bychkov:
-'''
+"""
 
 import os
 
@@ -36,32 +36,38 @@ def countBytes(path):
     """Размер файла"""
     print(os.path.getsize(path))
 
+
 def moveUp():
+    """Вверх"""
     os.chdir(os.getcwd()[: - os.getcwd()[::-1].find('\\')])
 
+
 def moveDown(currentDir):
+    """Вниз"""
     try:
         os.chdir(currentDir)
         print()
-    except:
+    except FileNotFoundError:
         print('Название папки введено неправильно')
         currentDir = input('Введите название заново: ')
         return moveDown(currentDir)
 
+
 def countFiles(path):
-    os.listdir(path)
+    """Счет файлов в папке"""
+    print(len(os.listdir(path)))
+
 
 def findFiles(target, path):
+    """Поиск"""
     try:
         for i in os.listdir(path):
             if i == target:
-                return print(path + '\\' + i)
+                return path + '\\' + i
             if os.path.isdir(path + '\\' + i):
                 findFiles(target, path + '\\' + i)
-
     except FileNotFoundError:
-        print("Адрес каталога указан неверно")
-        return ''
+        return 'Адрес указан неверно'
 
 def runCommand(command):
     """Выполнить команду"""
@@ -86,11 +92,11 @@ def runCommand(command):
     if command == 6:
         t = input('Введите файл который нужно найти: ')
         p = input('Введите адрес каталога в котором нужно найти файл: ')
-        ret = findFiles(t, p)
-        if ret == '':
-            print("Файл не найден")
+        if findFiles(t, p):
+            print(findFiles(t, p))
+            print('')
         else:
-            print(ret)
+            print('Файл не найден\n')
     if command == 7:
         print('Работа программы завершена')
         exit()
@@ -104,5 +110,6 @@ def main():
         command = acceptCommand()
         runCommand(command)
 
-main()
 
+
+main()
