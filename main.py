@@ -53,19 +53,24 @@ def moveDown(currentDir):
         return moveDown(currentDir)
 
 
-def countFiles(path):
+def countFiles(path, c=[]):
     """Счет файлов в папке"""
-    print(len(os.listdir(path)))
 
+    for i in os.listdir(path):
+        if not os.path.isdir(path + '\\' + i):
+            c.append(i)
+        else:
+            countFiles(path + '\\' + i, c)
+    return len(c)
 
 def findFiles(target, path):
     """Поиск"""
     try:
         for i in os.listdir(path):
             if i == target:
-                return path + '\\' + i
+                return print(path + '\\' + i)
             if os.path.isdir(path + '\\' + i):
-                findFiles(target, path + '\\' + i)
+                findFiles(target, path=path + '\\' + i)
     except FileNotFoundError:
         return 'Адрес указан неверно'
 
@@ -82,9 +87,10 @@ def runCommand(command):
         moveDown(os.getcwd() + '\\' + a)
 
     if command == 4:
-        b = input('Укажите папку: ')
+        b = input('Укажите адрес папки: ')
 
-        countFiles(b)
+        print(countFiles(b))
+        print('')
 
     if command == 5:
         return countBytes(path=os.getcwd())
@@ -93,10 +99,10 @@ def runCommand(command):
         t = input('Введите файл который нужно найти: ')
         p = input('Введите адрес каталога в котором нужно найти файл: ')
         if findFiles(t, p):
-            print(findFiles(t, p))
+            findFiles(t, p)
             print('')
         else:
-            print('Файл не найден\n')
+            print('Больше файлов нет\n')
     if command == 7:
         print('Работа программы завершена')
         exit()
