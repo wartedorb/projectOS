@@ -63,6 +63,7 @@ def countFiles(path, c=[]):
             countFiles(path + '\\' + i, c)
     return len(c)
 
+
 def findFiles(target, path):
     """Поиск"""
     try:
@@ -73,6 +74,7 @@ def findFiles(target, path):
                 findFiles(target, path=path + '\\' + i)
     except FileNotFoundError:
         return 'Адрес указан неверно'
+
 
 def runCommand(command):
     """Выполнить команду"""
@@ -117,5 +119,5 @@ def main():
         runCommand(command)
 
 
-
 main()
+
