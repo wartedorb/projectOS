@@ -1,6 +1,6 @@
 """"
 case OS
-devs: M. Kondrashov: 25%
+devs: M. Kondrashov: 30%
       E. Bikmetov: 60%
       K. Bychkov: 45%
 """
