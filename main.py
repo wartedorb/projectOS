@@ -1,8 +1,8 @@
 """"
 case OS
 devs: M. Kondrashov: 30%
-      E. Bikmetov:
-      K. Bychkov:
+      E. Bikmetov: 60%
+      K. Bychkov: 45%
 """
 
 import os
